@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUY - Plastic Ciggs</title>
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+    <div class="nav">
+        <a href="index.html"><div class="nav-item">Home</div></a>
+        <a href="buy.php"><div class="nav-item">Buy</div></a>
+        <div class="nav-item"><a href="contactus.php">Contact</a></div>
+        <div class="nav-item"><a href="aboutus.php">About us</a></div>
+        <div class="nav-item"><a href="login.php">Login</a></div>        
+    </div>
+    <div class="hover-container">
+        <div class="containergrid">
+            <div class="flex-grid">
+                <div data-img="img1" data-text="Text for Image 1" class="col"><img src="pic\nico.jpg"></div>
+                <div data-img="img2" data-text="Text for Image 2" class="col"><img src="pic\waltz.jpg"></div>
+                <div data-img="img3" data-text="Text for Image 3" class="col"><img src="pic\afterlife.jpg"></div>
+                <div data-img="img4" data-text="Text for Image 4" class="col"><img src="pic\grave.jpg"></div>
+                <div data-img="img5" data-text="Text for Image 5" class="col"><img src="pic\lucky.jpg"></div>
+                <div data-img="img6" data-text="Text for Image 6" class="col"><img src="pic\wager.jpg"></div>
+                <div data-img="img7" data-text="Text for Image 7" class="col"><img src="pic\tomb.jpg"></div>
+                <div data-img="img8" data-text="Text for Image 8" class="col"><img src="pic\ultra_clear.jpg"></div>
+            </div>
+        </div>
+        <div class="display-container">
+            <!-- Image Display Section -->
+            <div class="image-display">
+                <img src="pic/nico.jpg" id="img1" class="hover-img">
+                <img src="pic/waltz.jpg" id="img2" class="hover-img">
+                <img src="pic/afterlife.jpg" id="img3" class="hover-img">
+                <img src="pic/grave.jpg" id="img4" class="hover-img">
+                <img src="pic/lucky.jpg" id="img5" class="hover-img">
+                <img src="pic/wager.jpg" id="img6" class="hover-img">
+                <img src="pic/tomb.jpg" id="img7" class="hover-img">
+                <img src="pic/ultra_clear.jpg" id="img8" class="hover-img">
+            </div>
+                <!-- Text Display -->
+            <div class="text-display" id="text-display">
+                <p id="hover-text">Hover over an item to see the text.</p>
+            </div>
+        </div>    
+    </div>
+    <script>
+const hoverCols = document.querySelectorAll('.col');
+const displayText = document.getElementById('hover-text');
+
+hoverCols.forEach(col => {
+    col.addEventListener('mouseover', () => {
+        const textContent = col.getAttribute('data-text'); // Get corresponding text
+        const targetImg = col.getAttribute('data-img'); // Get corresponding image
+
+        // Update text content
+        displayText.textContent = textContent;
+
+        // Reset all images
+        document.querySelectorAll('.hover-img').forEach(img => {
+            img.style.opacity = '0';
+            img.style.transform = 'scale(0.9)';
+        });
+
+        // Show target image
+        const imgToShow = document.getElementById(targetImg);
+        imgToShow.style.opacity = '1';
+        imgToShow.style.transform = 'scale(1)';
+    });
+});
+
+
+    </script>
+    
+</body>
+</html>

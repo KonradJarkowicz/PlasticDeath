@@ -1,0 +1,299 @@
+@font-face {
+    font-family: "NeutroB";
+    src: url("Neutro-Bold.otf") format("opentype");
+}
+
+
+@font-face {
+    font-family: "NeutroO";
+    src: url("Neutro-Outline.otf") format("opentype");
+}
+
+* {
+    box-sizing: border-box;
+}
+
+  body{
+    height: 1000vh;
+    z-index: 1;
+    background-color: black;
+    font-family: NeutroB;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+header{
+    font-family: NeutroO;
+    font-size: 100px;
+    justify-content: center;
+    z-index: 3000;
+    color:#fff;
+    display:flex;
+    filter: opacity(100%);
+    font-style: italic;
+    position: relative;
+    top:-360px;
+    left:-50px;
+    filter: invert(95%);
+}
+
+/* Styling for the navigation bar */
+.nav {
+    color: red;
+    width: auto; /* Adjust width to fit content */
+    text-align: center;
+    height: 50px; /* Increased height for visibility */
+    display: flex; /* Use flexbox for row alignment */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Adjust spacing (use "center", "space-around", etc., as needed) */
+    padding: 10px 20px; /* Adds some space inside the nav bar */
+    position: fixed; /* Fixed positioning at the top */
+    top: 0; /* Positions the nav bar at the top */
+    left: 0; /* Aligns the nav to the left edge */
+    right: 0; /* Ensures nav spans the full width */
+    z-index: 10000; /* Ensures the nav is above other elements */
+    filter: invert();
+    margin: 15px;
+
+}
+
+/* Ensures content does not overlap with the fixed nav bar */
+.container {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: flex-start; /* Aligns items at the top */
+    gap: 2.5rem;
+    margin-top: 60px; /* Adds space to accommodate the fixed nav bar */
+}
+
+
+.nav + .nav {
+    margin-top: 60px; 
+}
+
+
+.nav-item {
+    margin: 0 10px;
+    cursor: pointer; 
+}
+
+#bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2vw auto; /* Dynamic margins for better adaptability */
+    position: relative;
+    scale: 2.2; /* Adjusted for responsiveness */
+    width: 80%; /* Use percentage-based width */
+    max-width: 1200px; /* Limit maximum size for large screens */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 0;
+    filter: opacity(50%) drop-shadow(16px 16px 20px red) invert(85%);
+    transition: all 0.3s ease-in-out; /* Smooth transition for scaling */
+}
+
+/* Adjust for smaller screens */
+@media screen and (max-width: 768px) {
+    #bg {
+        scale: 1; /* Reduce scaling on smaller screens */
+        width: 90%; /* Increase width to take more space */
+    }
+}
+
+/* Responsive Canvas (#shaderCanvas) */
+#shaderCanvas {
+    z-index: 5000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Full-width to fit the screen */
+    height: 100vh; /* Full height of the viewport */
+    filter: opacity(5%) invert();
+    pointer-events: none; /* Keep canvas non-interactive */
+    transition: filter 0.3s ease-in-out; /* Smooth transitions */
+}
+
+/* Adjust canvas filter for smaller screens */
+@media screen and (max-width: 768px) {
+    #shaderCanvas {
+        filter: opacity(10%) invert(); /* Slightly stronger filter for better visibility */
+    }
+}
+
+a{
+    z-index: 10000;
+    text-decoration:none;
+    color:red;
+}
+
+
+a:hover{
+    position:relative;
+    top:5px;
+    color:#6b9691;
+    filter: drop-shadow(16px 16px 20px #6b9691) invert(150%);;
+}
+
+.containergrid {
+    margin-top: 70px; /* Space for fixed header */
+    padding: 0px;
+    filter: opacity(50%) drop-shadow(16px 16px 20px red) invert(85%);
+}
+
+/* Grid Layout */
+.flex-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 10px 0;
+    padding: 5px;
+    background-color: rgba(0, 0, 255, 0.1);
+    border-radius: 10px;
+    flex-wrap: nowrap; /* Prevent wrapping to ensure all items stay in one row */
+    width: 100vw; /* Full width of the screen */
+}
+
+.col {
+    background-color: red;
+    aspect-ratio: 3/4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.col:hover img {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    position: sticky;
+    bottom: 0;
+    color: white;
+}
+
+/* Container Styles */
+.hover-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    position: relative;
+    scale:0.9;
+}
+
+.display-container {
+    display: flex;
+    flex-direction: column; /* Arrange items in a row */
+    justify-content: flex-start; /* Align to the left */
+    align-items: flex-start; /* Align top edges */
+    gap: 20px; /* Space between image and text displays */
+    margin: 20px auto; /* Center container on the page */
+    padding: 10px;
+    width: 90%; /* Flexible container width */
+}
+
+/* Hover Text */
+.col {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.col:hover {
+    color: red;
+}
+
+/* Image Display Area */
+.image-display {
+    position: relative;
+    width: 100%;
+    height: 1400px;
+    overflow: hidden;
+    border-radius: 20px;
+    max-width: 1200px; /* Limit maximum width */
+}
+
+/* Text Display Area */
+.text-display {
+    position: relative;
+    width:100%;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1rem;
+    word-wrap: break-word; /* Break long words to prevent overflow */
+    overflow-wrap: break-word; /* Ensure wrapping works in all browsers */
+    overflow: hidden; /* Hide overflowing content */
+}
+
+/* Responsive Typography */
+.text-display p {
+    font-size: clamp(1rem, 2.5vw, 1.5rem); /* Scales font size based on screen width */
+}
+
+/* Media Queries for Larger Screens */
+@media screen and (min-width: 768px) {
+    .display-container {
+        flex-direction: row; /* Arrange items in a row */
+        gap: 20px; /* Space between image and text displays */
+    }
+
+    .image-display,
+    .text-display {
+        width: 50%; /* Each takes half the container width */
+    }
+
+    .image-display {
+        aspect-ratio: 1/1; /* Adjust ratio for larger displays */
+    }
+}
+
+/* Media Queries for Smaller Screens */
+@media screen and (max-width: 480px) {
+    .text-display {
+        font-size: 0.9rem; /* Reduce font size for smaller screens */
+        padding: 10px; /* Adjust padding */
+        word-wrap:break-word;
+    }
+}
+
+/* Stacked Images */
+.hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(0.9); /* Shrink slightly by default */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth fade and zoom */
+    filter: opacity(50%) drop-shadow(16px 16px 20px red) invert(85%);
+}
+
+
+/* Show Image on Hover */
+.col:hover ~ .image-display #img1,
+.col[data-img="img2"]:hover ~ .image-display #img2,
+.col[data-img="img3"]:hover ~ .image-display #img3 {
+    opacity: 1;
+    transform: scale(1);
+}

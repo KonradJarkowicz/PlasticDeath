@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+    <div class="hover-container">
+        <!-- Text Options -->
+        <div class="hover-text" data-img="img1">Hover me: Image 1</div>
+        <div class="hover-text" data-img="img2">Hover me: Image 2</div>
+        <div class="hover-text" data-img="img3">Hover me: Image 3</div>
+    
+        <!-- Image Display Section -->
+        <div class="image-display">
+            <img src="pic/img1.jpg" id="img1" class="hover-img" alt="Image 1" />
+            <img src="pic/img2.jpg" id="img2" class="hover-img" alt="Image 2" />
+            <img src="pic/img3.jpg" id="img3" class="hover-img" alt="Image 3" />
+        </div>
+    </div>
+    <script>
+        const hoverTexts = document.querySelectorAll('.hover-text');
+const images = document.querySelectorAll('.hover-img');
+
+// Reset all images and then show the hovered one
+hoverTexts.forEach(text => {
+    text.addEventListener('mouseover', () => {
+        const targetImg = text.getAttribute('data-img');
+        images.forEach(img => {
+            img.style.opacity = '0'; // Hide all images
+            img.style.transform = 'scale(0.9)';
+        });
+        const imgToShow = document.getElementById(targetImg);
+        imgToShow.style.opacity = '1'; // Show target image
+        imgToShow.style.transform = 'scale(1)';
+    });
+});
+
+    </script>
+</body>
+</html>
