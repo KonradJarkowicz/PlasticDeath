@@ -1,0 +1,768 @@
+@font-face {
+    font-family: "NeutroB";
+    src: url("Neutro-Bold.otf") format("opentype");
+}
+
+
+@font-face {
+    font-family: "NeutroO";
+    src: url("Neutro-Outline.otf") format("opentype");
+}
+
+* {
+    box-sizing: border-box;
+}
+
+  body{
+    height: 10vh;
+    z-index: 1;
+    background-color: black;
+    font-family: NeutroB;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+#main-header{
+    font-family: NeutroB;
+    font-size: 100px;
+    justify-content: center;
+    z-index: 3000;
+    display:flex;
+    filter: opacity(100%) invert(95%);
+    font-style: bold;
+    position: relative;
+    color:transparent;
+    top:-360px;
+    left:-50px;
+    text-shadow: 4px 40px 10px #00ffff, 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Styling for the navigation bar */
+.nav {
+    color: red;
+    width: auto; /* Adjust width to fit content */
+    text-align: center;
+    height: 50px; /* Increased height for visibility */
+    display: flex; /* Use flexbox for row alignment */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Adjust spacing (use "center", "space-around", etc., as needed) */
+    padding: 10px 20px; /* Adds some space inside the nav bar */
+    position: fixed; /* Fixed positioning at the top */
+    top: 0; /* Positions the nav bar at the top */
+    left: 0; /* Aligns the nav to the left edge */
+    right: 0; /* Ensures nav spans the full width */
+    z-index: 10000; /* Ensures the nav is above other elements */
+    filter: invert();
+    margin: 15px;
+
+}
+
+/* Ensures content does not overlap with the fixed nav bar */
+.container {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: flex-start; /* Aligns items at the top */
+    gap: 2.5rem;
+    margin-top: 60px; /* Adds space to accommodate the fixed nav bar */
+}
+
+
+.nav + .nav {
+    margin-top: 60px; 
+}
+
+
+.nav-item {
+    margin: 0 10px;
+    cursor: pointer; 
+}
+
+#bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2vw auto; /* Dynamic margins for better adaptability */
+    position: relative;
+    scale: 2.2; /* Adjusted for responsiveness */
+    width: 80%; /* Use percentage-based width */
+    max-width: 1200px; /* Limit maximum size for large screens */
+    height: 60vh; /* Maintain aspect ratio */
+    z-index: 0;
+    filter: opacity(50%) drop-shadow(16px 16px 20px red) invert(85%);
+    transition: all 0.3s ease-in-out; /* Smooth transition for scaling */
+}
+
+/* Adjust for smaller screens */
+@media screen and (max-width: 768px) {
+    #bg {
+        scale: 1; /* Reduce scaling on smaller screens */
+        width: 90%; /* Increase width to take more space */
+    }
+}
+
+/* Responsive Canvas (#shaderCanvas) */
+#shaderCanvas {
+    z-index: 5000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Full-width to fit the screen */
+    height: 100vh; /* Full height of the viewport */
+    filter: opacity(5%) invert();
+    pointer-events: none; /* Keep canvas non-interactive */
+    transition: filter 0.3s ease-in-out; /* Smooth transitions */
+}
+
+/* Adjust canvas filter for smaller screens */
+@media screen and (max-width: 768px) {
+    #shaderCanvas {
+        filter: opacity(10%) invert(); /* Slightly stronger filter for better visibility */
+    }
+}
+
+a{
+    z-index: 10000;
+    text-decoration:none;
+    color:red;
+}
+
+
+a:hover{
+    position:relative;
+    top:5px;
+    color:#6b9691;
+    filter: drop-shadow(16px 16px 20px #6b9691) invert(150%);;
+}
+
+.containergrid {
+    margin-top: 70px; /* Space for fixed header */
+    padding: 0px;
+    filter: opacity(50%) drop-shadow(16px 16px 20px red) invert(85%);
+}
+
+/* Grid Layout */
+.flex-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 10px 0;
+    padding: 5px;
+    background-color: rgba(0, 0, 255, 0.1);
+    border-radius: 10px;
+    flex-wrap: nowrap; /* Prevent wrapping to ensure all items stay in one row */
+    width: 100vw; /* Full width of the screen */
+}
+
+.col p{
+    position: absolute;
+
+}
+
+.col {
+    background-color: red;
+    aspect-ratio: 3/4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.col:hover img {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    position: sticky;
+    bottom: 0;
+    color: white;
+}
+
+/* Container Styles */
+.hover-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    position: relative;
+    scale:0.9;
+}
+
+.display-container {
+    display: flex;
+    flex-direction: column; /* Arrange items in a row */
+    justify-content: flex-start; /* Align to the left */
+    align-items: flex-start; /* Align top edges */
+    gap: 20px; /* Space between image and text displays */
+    margin: 20px auto; /* Center container on the page */
+    padding: 10px;
+    width: 90%; /* Flexible container width */
+    margin-top: 100px;
+}
+
+/* Hover Text */
+.col {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.col:hover {
+    color: red;
+}
+
+/* Image Display Area */
+.image-display {
+    position: relative;
+    width: 100%;
+    height: 1400px;
+    overflow: hidden;
+    border-radius: 20px;
+    max-width: 1200px; /* Limit maximum width */
+}
+
+/* Text Display Area */
+.text-display {
+    position: relative;
+    width:100%;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin:100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1rem;
+    word-wrap: break-word; /* Break long words to prevent overflow */
+    overflow-wrap: break-word; /* Ensure wrapping works in all browsers */
+    overflow: hidden; /* Hide overflowing content */
+    line-height: 1.5;
+}
+
+.text-display h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: red;
+    filter:invert();
+}
+
+.text-display h2 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    margin-top: 20px;
+    filter:drop-shadow(15px 50px 30px #1ca1a1) opacity(100%) invert(85%);
+}
+
+.text-display p {
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+}
+
+.text-display ul {
+    padding-left: 20px;
+}
+
+.text-display ul li {
+    margin-bottom: 10px;
+}
+
+/* Responsive Typography */
+.text-display p {
+    font-size: clamp(1rem, 2.5vw, 1.5rem); /* Scales font size based on screen width */
+}
+
+/* Media Queries for Larger Screens */
+@media screen and (min-width: 768px) {
+    .display-container {
+        flex-direction: row; /* Arrange items in a row */
+        gap: 20px; /* Space between image and text displays */
+    }
+
+    .image-display,
+    .text-display {
+        width: 50%; /* Each takes half the container width */
+    }
+
+    .image-display {
+        aspect-ratio: 1/1; /* Adjust ratio for larger displays */
+    }
+}
+
+/* Media Queries for Smaller Screens */
+@media screen and (max-width: 480px) {
+    .text-display {
+        font-size: 0.9rem; /* Reduce font size for smaller screens */
+        padding: 10px; /* Adjust padding */
+        word-wrap:break-word;
+    }
+}
+
+/* Stacked Images */
+.hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(0.9); /* Shrink slightly by default */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth fade and zoom */
+    filter: opacity(100%) invert(85%);
+}
+
+
+/* Show Image on Hover */
+.col:hover ~ .image-display #img1,
+.col[data-img="img2"]:hover ~ .image-display #img2,
+.col[data-img="img3"]:hover ~ .image-display #img3 {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+.disclaimer{
+    display: flex;
+    flex-direction: row; /* Arrange items in a row */
+    justify-content: flex-start; /* Align to the left */
+    align-items: flex-start; /* Align top edges */
+    gap: 200px; /* Space between image and text displays */
+    margin: 20px auto; /* Center container on the page */
+    padding: 10px;
+    width: 100%; /* Flexible container width */
+    height: 600px;
+    font-size: 1.5rem;
+    margin-top: 100px;
+}
+
+.disclaimer-text{
+    position:relative;
+    color:red;
+    width:50%;
+    height: 500px;
+    text-align: center;
+}
+
+.disclaimer img{
+    position:relative;
+    width:600px;
+    scale:1.2;
+    left: 100px;
+    padding:50px;
+    filter: opacity(50%) drop-shadow(16px 16px 20px red) invert(15%);
+
+}
+
+#img1{
+    filter:drop-shadow(15px 50px 30px #54998f) opacity(100%) invert(85%);
+}
+
+#img2{
+    filter:drop-shadow(15px 50px 30px #976051) opacity(100%) invert(85%);
+}
+
+#img3{
+    filter:drop-shadow(15px 50px 30px #5e677b) opacity(100%) invert(85%);
+}
+
+#img4{
+    filter:drop-shadow(15px 50px 30px #864d4f) opacity(100%) invert(85%);
+}
+
+#img5{
+    filter:drop-shadow(15px 50px 30px #905965) opacity(100%) invert(85%);
+}
+
+#img6{
+    filter:drop-shadow(15px 50px 30px #5f9461) opacity(100%) invert(85%);
+}
+
+#img7{
+    filter:drop-shadow(15px 50px 30px #b4b65e) opacity(100%) invert(85%);
+}
+
+#img8{
+    filter:drop-shadow(15px 50px 30px #ac8557) opacity(100%) invert(85%);
+}
+
+/* Parent Container for Cards and Text Display */
+.subscription-container {
+    display: flex;
+    flex-direction: row; /* Align cards and text-display side by side */
+    justify-content: space-between; /* Distribute space evenly */
+    align-items: flex-start; /* Align items at the top */
+    width: 100%;
+    border-radius: 25px;
+    padding: 20px;
+    gap: 20px; /* Space between cards and text-display */
+    margin-top: 75px;
+}
+
+/* Column Styling for Cards */
+.subscription-cards-column {
+    display: flex;
+    flex-direction: column; /* Stack cards in a column */
+    gap: 20px; /* Add space between the cards */
+    flex: 0 1 auto; /* Allow column to shrink naturally */
+}
+
+/* Subscription Card Styling */
+.subscription-card {
+    position: relative;
+    background-color: red; /* Light grey for subscription plans */
+    filter: opacity(100%) invert(85%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.subscription-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+/*
+.sub-column{
+    display:flex;
+    flex-direction: column;
+}
+.subscription-options{
+    scale:1;
+    position: relative;
+    z-index: 10;
+    background: green;
+    width:50%;
+    height: 100px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex:1;
+}
+*/
+/* Text Display Next to Cards */
+#text-display-sub {
+    flex: 1; /* Fill remaining space next to the cards */
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Arrange text content vertically */
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    color: white;
+    overflow: hidden;
+    margin-left: 50px;
+}
+
+/* Header Inside Text Display */
+#text-display-sub h1 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: red;
+    filter:invert();
+}
+
+#text-display-sub p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+#text-display-sub ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+#text-display-sub ul li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+/* Header Section */
+#ab-header {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden; /* Ensures no content spills outside */
+}
+
+#ab-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('pic/row1.png') no-repeat center center/cover;
+    filter: opacity(50%) drop-shadow(16px 16px 12px red) invert(85%);
+    z-index: -1; /* Places the background below the text */
+}
+
+header .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff; /* Pure white text */
+    position: relative;
+    z-index: 1; /* Ensures the text appears above the pseudo-element */
+}
+
+header .hero p {
+    font-size: 1.2rem;
+}
+
+/* Section Styling */
+section {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    margin-top:50px;
+    margin-bottom: 1rem;
+    color: #111;
+    filter: invert();
+}
+
+section p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+/* Products Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 25px;
+}
+
+.product-item {
+    background: transparent;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    filter: opacity(100%) drop-shadow(16px 16px 12px red) invert(85%);
+}
+
+.product-item:hover {
+    transform: translateY(-10px);
+}
+
+.product-item img {
+    position: relative;
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+}
+
+.product-item h3 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    color: #222;
+}
+
+.product-item p {
+    font-size: 1rem;
+    margin: 0 1rem 1.5rem;
+    color: #666;
+}
+
+/* Call to Action */
+.cta {
+
+    color: #fff;
+    padding: 3rem 1rem;
+    border-radius: 8px;
+}
+
+.cta h2 {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.cta p {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #d9534f;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    filter: opacity(100%) drop-shadow(16px 16px 12px red) invert(85%);
+}
+
+.btn:hover {
+    background-color: transparent;
+}
+
+.about{
+    position: relative;
+    top:10.7vw;
+    margin-top: 100px;
+    
+}
+
+/* Header Section */
+#cu-header {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden; /* Ensures no content spills outside */
+    color: #666;
+    top:10.7vw;
+    margin-top: 200px;
+}
+
+#cu-header::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('pic/row2.png') no-repeat center center/cover;
+    filter: opacity(50%) drop-shadow(16px 16px 12px red) invert(85%);
+    z-index: -1; /* Places the background below the text */
+    color: #666;
+}
+
+/* Contact Form Wrapper */
+.form-wrapper {
+    position: relative;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    left: 0%;
+    scale:1.1;
+    color:#fff;
+    
+}
+
+.form-wrapper h1 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    text-align: center;
+    color: #000; /* Gray-700 */
+    margin-bottom: 1.5rem;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #000000a9; /* Gray-600 */
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db; /* Gray-300 */
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3b82f6; /* Blue-500 */
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+}
+
+/* Textarea Resizing */
+.form-group textarea {
+    resize: vertical;
+}
+
+/* Submit Button */
+.form-group button {
+    display: inline-block;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #d9534f;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.5s ease;
+    filter: opacity(100%);
+}
+
+.form-group button:hover {
+    background-color: transparent;
+    filter:invert(85%);
+}
+
+
+
+.contact-container{
+    display:flex;
+    flex-direction: row;
+    gap:250px;
+    width: 60%;
+    height: 800px;
+    background:transparent;
+    border-radius:20px;
+    position: relative;
+    top:10.7vw;
+    margin-top: 200px;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+    filter: drop-shadow(16px 16px 12px red) invert(85%);
+}
+
+.map-container{
+    position: relative;
+    border-radius: 25px;
+
+}
+
+/* Footer */
+footer {
+    position: relative;
+    top:450px;
+    text-align: center;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+    font-size: 0.9rem;
+}
