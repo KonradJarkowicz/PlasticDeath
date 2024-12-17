@@ -291,6 +291,7 @@ a:hover {
     }
 }
 
+/* Stacked Images */
 .hover-img {
     position: absolute;
     top: 0;
@@ -311,7 +312,7 @@ a:hover {
     transform: scale(1);
 }
 
-.disclaimer {
+.disclaimer{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -325,53 +326,53 @@ a:hover {
     margin-top: 100px;
 }
 
-.disclaimer-text {
-    position: relative;
-    color: red;
-    width: 50%;
+.disclaimer-text{
+    position:relative;
+    color:red;
+    width:50%;
     height: 500px;
     text-align: center;
 }
 
-.disclaimer img {
-    position: relative;
-    width: 600px;
-    scale: 1.2;
+.disclaimer img{
+    position:relative;
+    width:600px;
+    scale:1.2;
     left: 100px;
-    padding: 50px;
+    padding:50px;
     filter: opacity(50%) drop-shadow(16px 16px 20px red) invert(15%);
 }
 
-#img1 {
-    filter: drop-shadow(15px 50px 30px #54998f) opacity(100%) invert(85%);
+#img1{
+    filter:drop-shadow(15px 50px 30px #54998f) opacity(100%) invert(85%);
 }
 
-#img2 {
-    filter: drop-shadow(15px 50px 30px #976051) opacity(100%) invert(85%);
+#img2{
+    filter:drop-shadow(15px 50px 30px #976051) opacity(100%) invert(85%);
 }
 
-#img3 {
-    filter: drop-shadow(15px 50px 30px #5e677b) opacity(100%) invert(85%);
+#img3{
+    filter:drop-shadow(15px 50px 30px #5e677b) opacity(100%) invert(85%);
 }
 
-#img4 {
-    filter: drop-shadow(15px 50px 30px #864d4f) opacity(100%) invert(85%);
+#img4{
+    filter:drop-shadow(15px 50px 30px #864d4f) opacity(100%) invert(85%);
 }
 
-#img5 {
-    filter: drop-shadow(15px 50px 30px #905965) opacity(100%) invert(85%);
+#img5{
+    filter:drop-shadow(15px 50px 30px #905965) opacity(100%) invert(85%);
 }
 
-#img6 {
-    filter: drop-shadow(15px 50px 30px #5f9461) opacity(100%) invert(85%);
+#img6{
+    filter:drop-shadow(15px 50px 30px #5f9461) opacity(100%) invert(85%);
 }
 
-#img7 {
-    filter: drop-shadow(15px 50px 30px #b4b65e) opacity(100%) invert(85%);
+#img7{
+    filter:drop-shadow(15px 50px 30px #b4b65e) opacity(100%) invert(85%);
 }
 
-#img8 {
-    filter: drop-shadow(15px 50px 30px #ac8557) opacity(100%) invert(85%);
+#img8{
+    filter:drop-shadow(15px 50px 30px #ac8557) opacity(100%) invert(85%);
 }
 
 .subscription-container {
@@ -430,7 +431,7 @@ a:hover {
     font-size: 1.8rem;
     margin-bottom: 15px;
     color: red;
-    filter: invert();
+    filter:invert();
 }
 
 #text-display-sub p {
@@ -442,6 +443,11 @@ a:hover {
 #text-display-sub ul {
     padding-left: 20px;
     list-style-type: disc;
+}
+
+#text-display-sub ul li {
+    margin-bottom: 8px;
+    line-height: 1.4;
 }
 
 #ab-header {
@@ -474,6 +480,10 @@ header .hero h1 {
     z-index: 1;
 }
 
+header .hero p {
+    font-size: 1.2rem;
+}
+
 section {
     padding: 2rem;
     max-width: 1200px;
@@ -483,10 +493,16 @@ section {
 
 section h2 {
     font-size: 2.5rem;
-    margin-top: 50px;
+    margin-top:50px;
     margin-bottom: 1rem;
     color: #111;
     filter: invert();
+}
+
+section p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
 }
 
 .product-grid {
@@ -514,10 +530,32 @@ section h2 {
     object-fit: cover;
 }
 
+.product-item h3 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    color: #222;
+}
+
+.product-item p {
+    font-size: 1rem;
+    margin: 0 1rem 1.5rem;
+    color: #666;
+}
+
 .cta {
     color: #fff;
     padding: 3rem 1rem;
     border-radius: 8px;
+}
+
+.cta h2 {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.cta p {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .btn {
@@ -535,25 +573,133 @@ section h2 {
     background-color: transparent;
 }
 
-.contact-container {
+.about{
+    position: relative;
+    top:10.7vw;
+    margin-top: 100px;
+}
+
+#cu-header {
+    position: relative;
+    height: 90vh;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    color: #666;
+    top:10.7vw;
+    margin-top: 200px;
+}
+
+#cu-header::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('pic/row2.png') no-repeat center center/cover;
+    filter: opacity(50%) drop-shadow(16px 16px 12px red) invert(85%);
+    z-index: -1;
+    color: #666;
+}
+
+.form-wrapper {
+    position: relative;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    left: 0%;
+    scale:1.1;
+    color:#fff;
+}
+
+.form-wrapper h1 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    text-align: center;
+    color: #000;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #000000a9;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group button {
+    display: inline-block;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #d9534f;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.5s ease;
+    filter: opacity(100%);
+}
+
+.form-group button:hover {
+    background-color: transparent;
+    filter:invert(85%);
+}
+
+.contact-container{
+    display:flex;
     flex-direction: row;
-    gap: 250px;
+    gap:250px;
     width: 60%;
     height: 800px;
-    background: transparent;
-    border-radius: 20px;
+    background:transparent;
+    border-radius:20px;
     position: relative;
-    top: 10.7vw;
+    top:10.7vw;
     margin-top: 200px;
     justify-content: center;
     align-items: center;
+    justify-self: center;
     filter: drop-shadow(16px 16px 12px red) invert(85%);
+}
+
+.map-container{
+    position: relative;
+    border-radius: 25px;
 }
 
 footer {
     position: relative;
-    top: 450px;
+    top:450px;
     text-align: center;
     padding: 1rem;
     background-color: #333;
