@@ -3,6 +3,7 @@
     src: url("Neutro-Bold.otf") format("opentype");
 }
 
+
 @font-face {
     font-family: "NeutroO";
     src: url("Neutro-Outline.otf") format("opentype");
@@ -12,123 +13,132 @@
     box-sizing: border-box;
 }
 
-body {
+  body{
     height: 10vh;
     z-index: 1;
     background-color: black;
     font-family: NeutroB;
-    overflow-x: hidden;
+    overflow-x: hidden; 
 }
 
-#main-header {
+#main-header{
     font-family: NeutroB;
     font-size: 100px;
     justify-content: center;
     z-index: 3000;
-    display: flex;
+    display:flex;
     filter: opacity(100%) invert(95%);
     font-style: bold;
     position: relative;
-    color: transparent;
-    top: -360px;
-    left: -50px;
+    color:transparent;
+    top:-360px;
+    left:-50px;
     text-shadow: 4px 40px 10px #00ffff, 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
+/* navigation bar */
 .nav {
     color: red;
-    width: auto;
+    width: auto; 
     text-align: center;
-    height: 50px;
-    display: flex;
-    align-items: center;
+    height: 50px; 
+    display: flex; 
+    align-items: center; 
     justify-content: space-between;
-    padding: 10px 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10000;
+    padding: 10px 20px; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    z-index: 10000; 
     filter: invert();
     margin: 15px;
+
 }
 
 .container {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: column; 
+    align-items: flex-start; 
     gap: 2.5rem;
-    margin-top: 60px;
+    margin-top: 60px; 
 }
 
+
 .nav + .nav {
-    margin-top: 60px;
+    margin-top: 60px; 
 }
+
 
 .nav-item {
     margin: 0 10px;
-    cursor: pointer;
+    cursor: pointer; 
 }
 
 #bg {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2vw auto;
+    margin: 2vw auto; 
     position: relative;
-    scale: 2.2;
+    scale: 2.2; 
     width: 80%;
-    max-width: 1200px;
-    height: 60vh;
+    max-width: 1200px; 
+    height: 60vh; 
     z-index: 0;
     filter: opacity(50%) drop-shadow(16px 16px 20px red) invert(85%);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; 
 }
 
+/* Adjust for smaller screens */
 @media screen and (max-width: 768px) {
     #bg {
-        scale: 1;
-        width: 90%;
+        scale: 1; 
+        width: 90%; 
     }
 }
 
+/* Responsive Canvas (#shaderCanvas) */
 #shaderCanvas {
     z-index: 5000;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100vh;
+    width: 100%; 
+    height: 100vh; 
     filter: opacity(5%) invert();
-    pointer-events: none;
-    transition: filter 0.3s ease-in-out;
+    pointer-events: none; 
+    transition: filter 0.3s ease-in-out; 
 }
 
+/* Adjust canvas filter for smaller screens */
 @media screen and (max-width: 768px) {
     #shaderCanvas {
-        filter: opacity(10%) invert();
+        filter: opacity(10%) invert(); 
     }
 }
 
-a {
+a{
     z-index: 10000;
-    text-decoration: none;
-    color: red;
+    text-decoration:none;
+    color:red;
 }
 
-a:hover {
-    position: relative;
-    top: 5px;
-    color: #6b9691;
-    filter: drop-shadow(16px 16px 20px #6b9691) invert(150%);
+
+a:hover{
+    position:relative;
+    top:5px;
+    color:#6b9691;
+    filter: drop-shadow(16px 16px 20px #6b9691) invert(150%);;
 }
 
 .containergrid {
-    margin-top: 70px;
+    margin-top: 70px; 
     padding: 0px;
     filter: opacity(50%) drop-shadow(16px 16px 20px red) invert(85%);
 }
 
+/* Grid Layout */
 .flex-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -137,12 +147,13 @@ a:hover {
     padding: 5px;
     background-color: rgba(0, 0, 255, 0.1);
     border-radius: 10px;
-    flex-wrap: nowrap;
-    width: 100vw;
+    flex-wrap: nowrap; 
+    width: 100vw; 
 }
 
-.col p {
+.col p{
     position: absolute;
+
 }
 
 .col {
@@ -177,27 +188,29 @@ a:hover {
     color: white;
 }
 
+
 .hover-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
     position: relative;
-    scale: 0.9;
+    scale:0.9;
 }
 
 .display-container {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 20px;
-    margin: 20px auto;
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    gap: 20px; 
+    margin: 20px auto; 
     padding: 10px;
-    width: 90%;
+    width: 90%; 
     margin-top: 100px;
 }
 
+/* Hover Text */
 .col {
     cursor: pointer;
     font-size: 1.2rem;
@@ -209,30 +222,32 @@ a:hover {
     color: red;
 }
 
+/* Image Display Area */
 .image-display {
     position: relative;
     width: 100%;
     height: 1400px;
     overflow: hidden;
     border-radius: 20px;
-    max-width: 1200px;
+    max-width: 1200px; 
 }
 
+/* Text Display Area */
 .text-display {
     position: relative;
-    width: 100%;
+    width:100%;
     color: white;
     border-radius: 10px;
     padding: 20px;
-    margin: 100px;
+    margin:100px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     font-size: 1rem;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    overflow: hidden;
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    overflow: hidden; 
     line-height: 1.5;
 }
 
@@ -240,14 +255,14 @@ a:hover {
     font-size: 2.5rem;
     margin-bottom: 15px;
     color: red;
-    filter: invert();
+    filter:invert();
 }
 
 .text-display h2 {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1rem;
     margin-top: 20px;
-    filter: drop-shadow(15px 50px 30px #1ca1a1) opacity(100%) invert(85%);
+    filter:drop-shadow(15px 50px 30px #1ca1a1) opacity(100%) invert(85%);
 }
 
 .text-display p {
@@ -263,31 +278,34 @@ a:hover {
     margin-bottom: 10px;
 }
 
+/* Responsive Typography */
 .text-display p {
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-size: clamp(1rem, 2.5vw, 1.5rem); /* Scales font size based on screen width */
 }
 
+/* Media Queries for Larger Screens */
 @media screen and (min-width: 768px) {
     .display-container {
-        flex-direction: row;
-        gap: 20px;
+        flex-direction: row; 
+        gap: 20px; 
     }
 
     .image-display,
     .text-display {
-        width: 50%;
+        width: 50%; 
     }
 
     .image-display {
-        aspect-ratio: 1/1;
+        aspect-ratio: 1/1; 
     }
 }
 
+/* Media Queries for Smaller Screens */
 @media screen and (max-width: 480px) {
     .text-display {
-        font-size: 0.9rem;
-        padding: 10px;
-        word-wrap: break-word;
+        font-size: 0.9rem; 
+        padding: 10px; 
+        word-wrap:break-word;
     }
 }
 
@@ -300,11 +318,13 @@ a:hover {
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    transform: scale(0.9);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: scale(0.9); 
+    transition: opacity 0.5s ease, transform 0.5s ease; 
     filter: opacity(100%) invert(85%);
 }
 
+
+/* Show Image on Hover */
 .col:hover ~ .image-display #img1,
 .col[data-img="img2"]:hover ~ .image-display #img2,
 .col[data-img="img3"]:hover ~ .image-display #img3 {
@@ -312,15 +332,16 @@ a:hover {
     transform: scale(1);
 }
 
+
 .disclaimer{
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 200px;
-    margin: 20px auto;
+    flex-direction: row; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    gap: 200px; 
+    margin: 20px auto; 
     padding: 10px;
-    width: 100%;
+    width: 100%; 
     height: 600px;
     font-size: 1.5rem;
     margin-top: 100px;
@@ -341,6 +362,7 @@ a:hover {
     left: 100px;
     padding:50px;
     filter: opacity(50%) drop-shadow(16px 16px 20px red) invert(15%);
+
 }
 
 #img1{
@@ -375,28 +397,31 @@ a:hover {
     filter:drop-shadow(15px 50px 30px #ac8557) opacity(100%) invert(85%);
 }
 
+
 .subscription-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: flex-start; 
     width: 100%;
     border-radius: 25px;
     padding: 20px;
-    gap: 20px;
+    gap: 20px; 
     margin-top: 75px;
 }
 
+
 .subscription-cards-column {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    flex: 0 1 auto;
+    flex-direction: column; 
+    gap: 20px; 
+    flex: 0 1 auto; 
 }
 
+/* Subscription Card Styling */
 .subscription-card {
     position: relative;
-    background-color: red;
+    background-color: red; 
     filter: opacity(100%) invert(85%);
     color: white;
     padding: 20px;
@@ -412,13 +437,30 @@ a:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
-
+/*
+.sub-column{
+    display:flex;
+    flex-direction: column;
+}
+.subscription-options{
+    scale:1;
+    position: relative;
+    z-index: 10;
+    background: green;
+    width:50%;
+    height: 100px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex:1;
+}
+*/
+/* Text Display Next to Cards */
 #text-display-sub {
-    flex: 1;
+    flex: 1; 
     border-radius: 10px;
     padding: 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     justify-content: flex-start;
     align-items: flex-start;
     text-align: left;
@@ -427,6 +469,7 @@ a:hover {
     margin-left: 50px;
 }
 
+/* Header Inside Text Display */
 #text-display-sub h1 {
     font-size: 1.8rem;
     margin-bottom: 15px;
@@ -450,6 +493,7 @@ a:hover {
     line-height: 1.4;
 }
 
+/* Header Section */
 #ab-header {
     position: relative;
     height: 90vh;
@@ -457,7 +501,7 @@ a:hover {
     align-items: center;
     justify-content: center;
     text-align: center;
-    overflow: hidden;
+    overflow: hidden; 
 }
 
 #ab-header::before {
@@ -469,7 +513,7 @@ a:hover {
     height: 100%;
     background: url('pic/row1.png') no-repeat center center/cover;
     filter: opacity(50%) drop-shadow(16px 16px 12px red) invert(85%);
-    z-index: -1;
+    z-index: -1; 
 }
 
 header .hero h1 {
@@ -477,13 +521,14 @@ header .hero h1 {
     margin-bottom: 0.5rem;
     color: #ffffff;
     position: relative;
-    z-index: 1;
+    z-index: 1; 
 }
 
 header .hero p {
     font-size: 1.2rem;
 }
 
+/* Section Styling */
 section {
     padding: 2rem;
     max-width: 1200px;
@@ -505,6 +550,7 @@ section p {
     color: #555;
 }
 
+/* Products Grid */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -542,7 +588,9 @@ section p {
     color: #666;
 }
 
+/* Call to Action */
 .cta {
+
     color: #fff;
     padding: 3rem 1rem;
     border-radius: 8px;
@@ -577,8 +625,10 @@ section p {
     position: relative;
     top:10.7vw;
     margin-top: 100px;
+    
 }
 
+/* Header Section */
 #cu-header {
     position: relative;
     height: 90vh;
@@ -586,7 +636,7 @@ section p {
     align-items: center;
     justify-content: center;
     text-align: center;
-    overflow: hidden;
+    overflow: hidden; 
     color: #666;
     top:10.7vw;
     margin-top: 200px;
@@ -600,10 +650,11 @@ section p {
     height: 100%;
     background: url('pic/row2.png') no-repeat center center/cover;
     filter: opacity(50%) drop-shadow(16px 16px 12px red) invert(85%);
-    z-index: -1;
+    z-index: -1; 
     color: #666;
 }
 
+/* Contact Form Wrapper */
 .form-wrapper {
     position: relative;
     padding: 2rem;
@@ -612,16 +663,18 @@ section p {
     left: 0%;
     scale:1.1;
     color:#fff;
+    
 }
 
 .form-wrapper h1 {
     font-size: 1.75rem;
     font-weight: bold;
     text-align: center;
-    color: #000;
+    color: #000; 
     margin-bottom: 1.5rem;
 }
 
+/* Form Group */
 .form-group {
     margin-bottom: 1rem;
 }
@@ -630,7 +683,7 @@ section p {
     display: block;
     font-size: 0.875rem;
     font-weight: 500;
-    color: #000000a9;
+    color: #000000a9; 
     margin-bottom: 0.5rem;
 }
 
@@ -638,7 +691,7 @@ section p {
 .form-group textarea {
     width: 100%;
     padding: 0.5rem;
-    border: 1px solid #d1d5db;
+    border: 1px solid #d1d5db; 
     border-radius: 4px;
     font-size: 1rem;
     transition: border 0.2s, box-shadow 0.2s;
@@ -651,10 +704,12 @@ section p {
     box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
 }
 
+/* Textarea Resizing */
 .form-group textarea {
     resize: vertical;
 }
 
+/* Submit Button */
 .form-group button {
     display: inline-block;
     width: 100%;
@@ -674,6 +729,8 @@ section p {
     background-color: transparent;
     filter:invert(85%);
 }
+
+
 
 .contact-container{
     display:flex;
@@ -695,8 +752,10 @@ section p {
 .map-container{
     position: relative;
     border-radius: 25px;
+
 }
 
+/* Footer */
 footer {
     position: relative;
     top:450px;
