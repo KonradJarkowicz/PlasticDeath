@@ -100,13 +100,13 @@
 
 /* Responsive Canvas (#shaderCanvas) */
 #shaderCanvas {
-    z-index: 500000;
+    z-index: 5000;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%; 
     height: 100vh; 
-    filter: opacity(100%) invert();
+    filter: opacity(5%) invert();
     pointer-events: none; 
     transition: filter 0.3s ease-in-out; 
 }
